@@ -1,12 +1,12 @@
 {
     "name": "open-solid/ddd",
-    "description": "Domain-Driven Design building blocks",
+    "description": "Domain-Driven Design common building blocks",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Yonel Ceruto",
-            "email": "yonelceruto@gmail.com"
+            "email": "patch@yceruto.dev"
         }
     ],
     "autoload": {
@@ -23,17 +23,15 @@
         "php": ">=8.2",
         "symfony/uid": "^7.0",
         "symfony/string": "^7.0",
-        "open-solid/messenger": "dev-main"
+        "open-solid/domain-event": "v1.0"
     },
     "require-dev": {
         "vimeo/psalm": "^5.0",
         "phpunit/phpunit": "^10.0",
-        "psalm/plugin-phpunit": "^0.18",
-        "symfony/messenger": "^7.0"
+        "psalm/plugin-phpunit": "^0.18"
     },
     "scripts": {
         "test": "vendor/bin/phpunit tests",
         "psalm": "vendor/bin/psalm --show-info=true"
-    },
-    "minimum-stability": "dev"
+    }
 }

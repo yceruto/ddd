@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace OpenSolid\Tests\Ddd\Domain\Entity;
 
 use DateTimeImmutable;
-use OpenSolid\Ddd\Domain\Entity\AggregateRoot;
+use OpenSolid\Ddd\Domain\Aggregate\AggregateRoot;
 use OpenSolid\Ddd\Domain\Error\DomainError;
 use OpenSolid\Ddd\Domain\Error\InvalidArgument;
+use OpenSolid\DomainEvent\DomainEvent;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Uid\UuidV7;
+use Symfony\Component\Uid\UuidV4;
 
 class AggregateRootTest extends TestCase
 {
@@ -67,7 +68,11 @@ class AggregateRootTest extends TestCase
         $this->assertCount(1, $events = $entity->pullDomainEvents());
         $this->assertInstanceOf(EntityUpdated::class, $events[0]);
         $this->assertSame('uuid', $events[0]->aggregateId);
-        $this->assertTrue(UuidV7::isValid($events[0]->eventId));
+        $this->assertTrue(UuidV4::isValid($events[0]->eventId));
         $this->assertInstanceOf(DateTimeImmutable::class, $events[0]->occurredOn);
     }
+}
+
+final readonly class EntityUpdated extends DomainEvent
+{
 }
