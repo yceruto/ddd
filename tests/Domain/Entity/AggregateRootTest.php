@@ -73,6 +73,9 @@ class AggregateRootTest extends TestCase
     }
 }
 
+/**
+ * @psalm-immutable
+ */
 final readonly class EntityUpdated extends DomainEvent
 {
 }
